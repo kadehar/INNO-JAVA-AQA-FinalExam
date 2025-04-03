@@ -2,11 +2,19 @@
 
 ### Задания
 
-Напишите UI-тесты на сайт Swag Labs
+Напишите свой тестовый фреймворк, используя знания, полученные в ходе обучения.
+Фреймворк должен включать:
+
+- Работу с DB
+- Работу с API
+- Работу с WEB
+- Отчеты Allure
 
 ### Реквизиты
 
-- URL: https://www.saucedemo.com/
+- WEB URL: https://www.saucedemo.com/
+- API URL: https://x-clients-be.onrender.com
+- API Swagger: https://x-clients-be.onrender.com/docs/#/
 
 ### Создание Allure отчета после прогона тестов и его просмотр
 
