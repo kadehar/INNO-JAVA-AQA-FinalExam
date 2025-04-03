@@ -1,6 +1,6 @@
 package com.github.kadehar.inno.jupiter.extension;
 
-import com.github.kadehar.inno.data.service.EmployeeDbClient;
+import com.github.kadehar.inno.service.db.EmployeeDbClient;
 import com.github.kadehar.inno.utils.TestStorageKey;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;

@@ -4,8 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.github.kadehar.inno.model.web.Currency;
 import com.github.kadehar.inno.page.component.Title;
-import com.github.kadehar.inno.utils.ElementUtil;
-import com.github.kadehar.inno.utils.PriceUtil;
+import com.github.kadehar.inno.utils.DecimalPrice;
 import io.qameta.allure.Step;
 
 import java.math.BigDecimal;
@@ -29,17 +28,13 @@ public class CheckoutOverviewPage {
 
     @Step("Verify total price in {currency}")
     public CheckoutOverviewPage verifyTotalPrice(Currency currency) {
-        BigDecimal tax = PriceUtil.getPrice(
-                ElementUtil.getText(taxPrice),
-                "Tax: ",
-                currency
-        );
-        BigDecimal subtotal = PriceUtil.getPrice(
-                ElementUtil.getText(subtotalPrice),
-                "Item total: ",
-                currency
-        );
-        String total = PriceUtil.getTotal(tax, subtotal);
+        String taxPriceText = taxPrice.shouldBe(Condition.visible).text()
+                .replace("Tax: " + currency.getSign(), "");
+        String subtotalPriceText = subtotalPrice.shouldBe(Condition.visible).text()
+                .replace("Item total: " + currency.getSign(), "");
+        BigDecimal tax = DecimalPrice.asDecimalPrice(taxPriceText);
+        BigDecimal subtotal = DecimalPrice.asDecimalPrice(subtotalPriceText);
+        String total = DecimalPrice.asText(tax, subtotal);
         totalPrice.shouldBe(Condition.visible).shouldHave(Condition.text(total));
         return this;
     }

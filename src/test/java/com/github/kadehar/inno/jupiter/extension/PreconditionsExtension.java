@@ -2,10 +2,10 @@ package com.github.kadehar.inno.jupiter.extension;
 
 import com.github.kadehar.inno.model.rest.UserJson;
 import com.github.kadehar.inno.config.Config;
-import com.github.kadehar.inno.data.entity.AppUserEntity;
-import com.github.kadehar.inno.data.entity.CompanyEntity;
-import com.github.kadehar.inno.data.service.AppUsersDbClient;
-import com.github.kadehar.inno.data.service.CompanyDbClient;
+import com.github.kadehar.inno.db.entity.AppUserEntity;
+import com.github.kadehar.inno.db.entity.CompanyEntity;
+import com.github.kadehar.inno.service.db.AppUsersDbClient;
+import com.github.kadehar.inno.service.db.CompanyDbClient;
 import com.github.kadehar.inno.jupiter.annotation.WithPreconditions;
 import com.github.kadehar.inno.utils.*;
 import org.junit.jupiter.api.extension.AfterEachCallback;

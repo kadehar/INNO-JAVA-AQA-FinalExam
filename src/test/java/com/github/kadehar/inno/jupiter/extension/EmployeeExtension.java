@@ -1,8 +1,8 @@
 package com.github.kadehar.inno.jupiter.extension;
 
-import com.github.kadehar.inno.api.service.EmployeeClient;
+import com.github.kadehar.inno.service.api.EmployeeClient;
 import com.github.kadehar.inno.model.rest.EmployeeJson;
-import com.github.kadehar.inno.data.service.EmployeeDbClient;
+import com.github.kadehar.inno.service.db.EmployeeDbClient;
 import com.github.kadehar.inno.utils.EmployeeCreator;
 import com.github.kadehar.inno.utils.TestStorageKey;
 import org.junit.jupiter.api.extension.*;
