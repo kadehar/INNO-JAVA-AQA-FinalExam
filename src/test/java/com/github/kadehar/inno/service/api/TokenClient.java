@@ -4,6 +4,9 @@ import com.github.kadehar.inno.api.RestClient;
 import com.github.kadehar.inno.api.TokenApi;
 import com.github.kadehar.inno.config.Config;
 import com.github.kadehar.inno.model.rest.UserJson;
+import io.qameta.allure.Param;
+import io.qameta.allure.Step;
+import io.qameta.allure.model.Parameter;
 import lombok.SneakyThrows;
 
 public class TokenClient extends RestClient {
@@ -17,7 +20,8 @@ public class TokenClient extends RestClient {
     }
 
     @SneakyThrows
-    public String fetchToken(UserJson userJson) {
+    @Step("Get auth token for user {userJson.username}")
+    public String fetchToken(@Param(mode = Parameter.Mode.HIDDEN) UserJson userJson) {
         return tokenApi.fetchToken(userJson).execute().body().getUserToken();
     }
 }
