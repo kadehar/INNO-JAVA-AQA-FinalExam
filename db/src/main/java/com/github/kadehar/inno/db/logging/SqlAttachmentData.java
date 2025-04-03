@@ -1,4 +1,4 @@
-package com.github.kadehar.inno.data.logging;
+package com.github.kadehar.inno.db.logging;
 
 import io.qameta.allure.attachment.AttachmentData;
 import lombok.AllArgsConstructor;

@@ -1,8 +1,9 @@
 package com.github.kadehar.inno.api.service;
 
+import com.github.kadehar.inno.api.RestClient;
 import com.github.kadehar.inno.api.core.EmployeeApi;
-import com.github.kadehar.inno.api.core.RestClient;
 import com.github.kadehar.inno.api.core.interceptors.AuthInterceptor;
+import com.github.kadehar.inno.config.Config;
 import com.github.kadehar.inno.model.rest.EmployeeJson;
 import lombok.SneakyThrows;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -10,6 +11,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import java.util.List;
 
 public class EmployeeClient extends RestClient {
+
+    private static final Config CFG = Config.getInstance();
 
     private final EmployeeApi employeeApi;
 

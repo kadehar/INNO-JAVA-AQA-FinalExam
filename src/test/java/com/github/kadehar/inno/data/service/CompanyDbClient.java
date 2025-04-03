@@ -3,8 +3,9 @@ package com.github.kadehar.inno.data.service;
 import com.github.kadehar.inno.config.Config;
 import com.github.kadehar.inno.data.dao.impl.CompanyDaoJdbc;
 import com.github.kadehar.inno.data.entity.CompanyEntity;
+import com.github.kadehar.inno.db.DbData;
 
-import static com.github.kadehar.inno.data.Databases.transaction;
+import static com.github.kadehar.inno.db.Databases.transaction;
 
 public class CompanyDbClient {
 
@@ -13,12 +14,12 @@ public class CompanyDbClient {
     public CompanyEntity createCompany(CompanyEntity company) {
         return transaction(connection -> {
             return new CompanyDaoJdbc(connection).create(company);
-        }, CFG.dbUrl());
+        }, new DbData(CFG.dbUrl(), CFG.dbLogin(), CFG.dbPassword()));
     }
 
     public void deleteCompanyById(Long id) {
         transaction(connection -> {
             new CompanyDaoJdbc(connection).deleteCompanyById(id);
-        }, CFG.dbUrl());
+        }, new DbData(CFG.dbUrl(), CFG.dbLogin(), CFG.dbPassword()));
     }
 }

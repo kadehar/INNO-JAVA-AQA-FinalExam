@@ -1,4 +1,4 @@
-package com.github.kadehar.inno.data.logging;
+package com.github.kadehar.inno.db.logging;
 
 import com.github.vertical_blank.sqlformatter.SqlFormatter;
 import com.github.vertical_blank.sqlformatter.languages.Dialect;

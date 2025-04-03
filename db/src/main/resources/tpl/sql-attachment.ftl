@@ -1,5 +1,5 @@
 <html>
-<#-- @ftlvariable name="data" type="com.github.kadehar.inno.data.logging.SqlAttachmentData" -->
+<#-- @ftlvariable name="data" type="com.github.kadehar.inno.db.logging.SqlAttachmentData" -->
 <head>
     <meta http-equiv="content-type" content="text/html; charset = UTF-8">
     <link type="text/css" href="https://yandex.st/highlightjs/8.0/styles/github.min.css" rel="stylesheet"/>

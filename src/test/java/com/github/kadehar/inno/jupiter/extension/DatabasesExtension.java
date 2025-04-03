@@ -1,6 +1,6 @@
 package com.github.kadehar.inno.jupiter.extension;
 
-import com.github.kadehar.inno.data.Databases;
+import com.github.kadehar.inno.db.Databases;
 
 public class DatabasesExtension implements SuiteExtension {
 

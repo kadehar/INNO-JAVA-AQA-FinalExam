@@ -1,0 +1,11 @@
+plugins {
+    alias(libs.plugins.lombok)
+}
+
+dependencies {
+    implementation libs.allure.attachments
+    implementation libs.postgresql
+    implementation libs.p6spy
+    implementation libs.sql.formatter
+    implementation libs.commons.lang3
+}
