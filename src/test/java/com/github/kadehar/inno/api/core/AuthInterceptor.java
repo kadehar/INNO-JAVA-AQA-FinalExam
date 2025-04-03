@@ -1,4 +1,4 @@
-package com.github.kadehar.inno.api.core.interceptors;
+package com.github.kadehar.inno.api.core;
 
 import com.github.kadehar.inno.jupiter.extension.ApiLoginExtension;
 import okhttp3.Interceptor;

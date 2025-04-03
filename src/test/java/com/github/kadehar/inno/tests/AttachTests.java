@@ -1,6 +1,6 @@
 package com.github.kadehar.inno.tests;
 
-import com.github.kadehar.inno.api.service.EmployeeClient;
+import com.github.kadehar.inno.service.api.EmployeeClient;
 import com.github.kadehar.inno.jupiter.annotation.ApiLogin;
 import com.github.kadehar.inno.jupiter.annotation.WithEmployee;
 import com.github.kadehar.inno.jupiter.annotation.WithPreconditions;

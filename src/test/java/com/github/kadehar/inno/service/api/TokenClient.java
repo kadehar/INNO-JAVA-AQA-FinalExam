@@ -1,11 +1,10 @@
-package com.github.kadehar.inno.api.service;
+package com.github.kadehar.inno.service.api;
 
 import com.github.kadehar.inno.api.RestClient;
-import com.github.kadehar.inno.api.core.TokenApi;
+import com.github.kadehar.inno.api.TokenApi;
 import com.github.kadehar.inno.config.Config;
 import com.github.kadehar.inno.model.rest.UserJson;
-
-import java.io.IOException;
+import lombok.SneakyThrows;
 
 public class TokenClient extends RestClient {
     private static final Config CFG = Config.getInstance();
@@ -17,11 +16,8 @@ public class TokenClient extends RestClient {
         this.tokenApi = create(TokenApi.class);
     }
 
+    @SneakyThrows
     public String fetchToken(UserJson userJson) {
-        try {
-            return tokenApi.fetchToken(userJson).execute().body().getUserToken();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return tokenApi.fetchToken(userJson).execute().body().getUserToken();
     }
 }

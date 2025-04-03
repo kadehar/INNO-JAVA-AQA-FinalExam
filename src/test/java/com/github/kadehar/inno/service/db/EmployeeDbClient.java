@@ -1,7 +1,7 @@
-package com.github.kadehar.inno.data.service;
+package com.github.kadehar.inno.service.db;
 
 import com.github.kadehar.inno.config.Config;
-import com.github.kadehar.inno.data.dao.impl.EmployeeDaoJdbc;
+import com.github.kadehar.inno.db.dao.impl.EmployeeDaoJdbc;
 import com.github.kadehar.inno.db.DbData;
 
 import static com.github.kadehar.inno.db.Databases.transaction;

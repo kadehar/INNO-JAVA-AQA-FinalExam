@@ -1,17 +1,15 @@
-package com.github.kadehar.inno.data.dao.impl;
+package com.github.kadehar.inno.db.dao.impl;
 
-import com.github.kadehar.inno.data.dao.AppUsersDao;
-import com.github.kadehar.inno.data.entity.AppUserEntity;
+import com.github.kadehar.inno.db.dao.AppUsersDao;
+import com.github.kadehar.inno.db.entity.AppUserEntity;
+import lombok.RequiredArgsConstructor;
 
 import java.sql.*;
 
+@RequiredArgsConstructor
 public class AppUsersDaoJdbc implements AppUsersDao {
 
     private final Connection connection;
-
-    public AppUsersDaoJdbc(Connection connection) {
-        this.connection = connection;
-    }
 
     @Override
     public AppUserEntity create(AppUserEntity user) {
@@ -20,14 +18,14 @@ public class AppUsersDaoJdbc implements AppUsersDao {
                         "values (?, ?, ?, ?, ?::app_users_role_enum);",
                 Statement.RETURN_GENERATED_KEYS
         )) {
-            ps.setBoolean(1, user.getActive());
+            ps.setBoolean(1, user.isActive());
             ps.setString(2, user.getLogin());
             ps.setString(3, user.getPassword());
             ps.setString(4, user.getDisplayName());
             ps.setString(5, user.getRole());
 
             ps.executeUpdate();
-            Long id;
+            long id;
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
                     id = rs.getLong("id");

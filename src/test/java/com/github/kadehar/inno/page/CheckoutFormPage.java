@@ -3,7 +3,6 @@ package com.github.kadehar.inno.page;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.github.kadehar.inno.page.component.Title;
-import com.github.kadehar.inno.utils.ElementUtil;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -28,19 +27,19 @@ public class CheckoutFormPage {
 
     @Step("Type {firstName} in \"First Name\" field")
     public CheckoutFormPage typeFirstName(String firstName) {
-        ElementUtil.type(this.firstName, firstName);
+        this.firstName.shouldBe(Condition.visible).setValue(firstName);
         return this;
     }
 
     @Step("Type {lastName} in \"Last Name\" field")
     public CheckoutFormPage typeLastName(String lastName) {
-        ElementUtil.type(this.lastName, lastName);
+        this.lastName.shouldBe(Condition.visible).setValue(lastName);
         return this;
     }
 
     @Step("Type {zipCode} in \"Zip/Postal Code\" field")
     public CheckoutFormPage typeZipCode(String zipCode) {
-        ElementUtil.type(this.zipCode, zipCode);
+        this.zipCode.shouldBe(Condition.visible).setValue(zipCode);
         return this;
     }
 

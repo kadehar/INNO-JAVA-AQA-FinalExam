@@ -1,18 +1,16 @@
-package com.github.kadehar.inno.data.dao.impl;
+package com.github.kadehar.inno.db.dao.impl;
 
-import com.github.kadehar.inno.data.dao.EmployeeDao;
+import com.github.kadehar.inno.db.dao.EmployeeDao;
+import lombok.RequiredArgsConstructor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+@RequiredArgsConstructor
 public class EmployeeDaoJdbc implements EmployeeDao {
 
     private final Connection connection;
-
-    public EmployeeDaoJdbc(Connection connection) {
-        this.connection = connection;
-    }
 
     @Override
     public void deleteEmployeeById(Long id) {

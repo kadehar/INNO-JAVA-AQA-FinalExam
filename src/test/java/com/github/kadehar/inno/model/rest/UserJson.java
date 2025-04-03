@@ -1,10 +1,8 @@
 package com.github.kadehar.inno.model.rest;
 
-import com.github.kadehar.inno.data.entity.AppUserEntity;
+import com.github.kadehar.inno.db.entity.AppUserEntity;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
-
-import java.util.Objects;
 
 @Data
 public class UserJson {

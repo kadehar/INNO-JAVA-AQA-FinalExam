@@ -1,17 +1,15 @@
-package com.github.kadehar.inno.data.dao.impl;
+package com.github.kadehar.inno.db.dao.impl;
 
-import com.github.kadehar.inno.data.dao.CompanyDao;
-import com.github.kadehar.inno.data.entity.CompanyEntity;
+import com.github.kadehar.inno.db.dao.CompanyDao;
+import com.github.kadehar.inno.db.entity.CompanyEntity;
+import lombok.RequiredArgsConstructor;
 
 import java.sql.*;
 
+@RequiredArgsConstructor
 public class CompanyDaoJdbc implements CompanyDao {
 
     private final Connection connection;
-
-    public CompanyDaoJdbc(Connection connection) {
-        this.connection = connection;
-    }
 
     @Override
     public CompanyEntity create(CompanyEntity company) {
@@ -20,12 +18,12 @@ public class CompanyDaoJdbc implements CompanyDao {
                         "values (?, ?, ?);",
                 Statement.RETURN_GENERATED_KEYS
         )) {
-            ps.setBoolean(1, company.getActive());
+            ps.setBoolean(1, company.isActive());
             ps.setString(2, company.getName());
             ps.setString(3, company.getDescription());
 
             ps.executeUpdate();
-            Long id;
+            long id;
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
                     id = rs.getLong("id");

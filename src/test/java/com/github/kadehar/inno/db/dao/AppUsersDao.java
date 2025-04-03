@@ -1,6 +1,6 @@
-package com.github.kadehar.inno.data.dao;
+package com.github.kadehar.inno.db.dao;
 
-import com.github.kadehar.inno.data.entity.AppUserEntity;
+import com.github.kadehar.inno.db.entity.AppUserEntity;
 
 public interface AppUsersDao {
     AppUserEntity create(AppUserEntity user);

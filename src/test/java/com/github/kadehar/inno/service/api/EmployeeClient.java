@@ -1,8 +1,8 @@
-package com.github.kadehar.inno.api.service;
+package com.github.kadehar.inno.service.api;
 
 import com.github.kadehar.inno.api.RestClient;
-import com.github.kadehar.inno.api.core.EmployeeApi;
-import com.github.kadehar.inno.api.core.interceptors.AuthInterceptor;
+import com.github.kadehar.inno.api.EmployeeApi;
+import com.github.kadehar.inno.api.core.AuthInterceptor;
 import com.github.kadehar.inno.config.Config;
 import com.github.kadehar.inno.model.rest.EmployeeJson;
 import lombok.SneakyThrows;

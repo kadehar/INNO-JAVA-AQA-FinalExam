@@ -1,6 +1,6 @@
 package com.github.kadehar.inno.jupiter.extension;
 
-import com.github.kadehar.inno.api.service.TokenClient;
+import com.github.kadehar.inno.service.api.TokenClient;
 import com.github.kadehar.inno.model.rest.UserJson;
 import com.github.kadehar.inno.jupiter.annotation.ApiLogin;
 import com.github.kadehar.inno.utils.TestStorageKey;

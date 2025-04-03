@@ -1,4 +1,4 @@
-package com.github.kadehar.inno.api.core;
+package com.github.kadehar.inno.api;
 
 import com.github.kadehar.inno.model.rest.Token;
 import com.github.kadehar.inno.model.rest.UserJson;
