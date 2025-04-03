@@ -7,8 +7,7 @@ import com.github.kadehar.inno.data.entity.CompanyEntity;
 import com.github.kadehar.inno.data.service.AppUsersDbClient;
 import com.github.kadehar.inno.data.service.CompanyDbClient;
 import com.github.kadehar.inno.jupiter.annotation.WithPreconditions;
-import com.github.kadehar.inno.utils.TestStorageKey;
-import com.github.kadehar.inno.utils.RandomDataUtils;
+import com.github.kadehar.inno.utils.*;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -70,7 +69,7 @@ public class PreconditionsExtension implements BeforeEachCallback, AfterEachCall
         user.setActive(true);
         user.setRole(CFG.dbUserRole());
         user.setLogin(CFG.dbUserName());
-        user.setDisplayName(RandomDataUtils.randomNickname());
+        user.setDisplayName(FakePerson.nick());
         user.setPassword(CFG.dbUserPassword());
         user = usersDbClient.createUser(user);
         setUserId(user.getId());
@@ -80,8 +79,8 @@ public class PreconditionsExtension implements BeforeEachCallback, AfterEachCall
     private void initCompany() {
         CompanyEntity company = new CompanyEntity();
         company.setActive(true);
-        company.setName(RandomDataUtils.randomCompanyName());
-        company.setDescription(RandomDataUtils.randomCompanyDescription());
+        company.setName(FakeCompany.name());
+        company.setDescription(FakeCompany.description());
         company = companyDbClient.createCompany(company);
         setCompanyId(company.getId());
     }

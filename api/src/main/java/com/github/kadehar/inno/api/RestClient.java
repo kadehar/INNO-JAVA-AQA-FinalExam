@@ -1,6 +1,5 @@
-package com.github.kadehar.inno.api.core;
+package com.github.kadehar.inno.api;
 
-import com.github.kadehar.inno.config.Config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.qameta.allure.okhttp3.AllureOkHttp3;
@@ -14,8 +13,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static okhttp3.logging.HttpLoggingInterceptor.Level.HEADERS;
 
 public abstract class RestClient {
-    protected static final Config CFG = Config.getInstance();
-
     private static final Gson GSON = new GsonBuilder().setLenient().setPrettyPrinting().create();
 
     private final OkHttpClient okHttpClient;

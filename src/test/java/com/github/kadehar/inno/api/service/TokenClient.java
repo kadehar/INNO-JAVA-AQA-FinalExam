@@ -1,12 +1,14 @@
 package com.github.kadehar.inno.api.service;
 
-import com.github.kadehar.inno.api.core.RestClient;
+import com.github.kadehar.inno.api.RestClient;
 import com.github.kadehar.inno.api.core.TokenApi;
+import com.github.kadehar.inno.config.Config;
 import com.github.kadehar.inno.model.rest.UserJson;
 
 import java.io.IOException;
 
 public class TokenClient extends RestClient {
+    private static final Config CFG = Config.getInstance();
 
     private final TokenApi tokenApi;
 

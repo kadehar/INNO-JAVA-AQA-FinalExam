@@ -1,6 +1,5 @@
-package com.github.kadehar.inno.data;
+package com.github.kadehar.inno.db;
 
-import com.github.kadehar.inno.config.Config;
 import com.p6spy.engine.spy.P6DataSource;
 import org.postgresql.ds.PGSimpleDataSource;
 
@@ -20,12 +19,11 @@ public class Databases {
 
     private static final Map<String, DataSource> SOURCES = new ConcurrentHashMap<>();
     private static final Map<Long, Map<String, Connection>> THREAD_CONNECTIONS = new ConcurrentHashMap<>();
-    private static final Config CFG = Config.getInstance();
 
-    public static <T> T transaction(Function<Connection, T> function, String jdbcUrl) {
+    public static <T> T transaction(Function<Connection, T> function, DbData data) {
         Connection connection = null;
         try {
-            connection = connection(jdbcUrl);
+            connection = connection(data);
             connection.setAutoCommit(false);
             T result = function.apply(connection);
             connection.commit();
@@ -44,10 +42,10 @@ public class Databases {
         }
     }
 
-    public static void transaction(Consumer<Connection> consumer, String jdbcUrl) {
+    public static void transaction(Consumer<Connection> consumer, DbData data) {
         Connection connection = null;
         try {
-            connection = connection(jdbcUrl);
+            connection = connection(data);
             connection.setAutoCommit(false);
             consumer.accept(connection);
             connection.commit();
@@ -65,37 +63,37 @@ public class Databases {
         }
     }
 
-    private static DataSource dataSource(String jdbcUrl) {
+    private static DataSource dataSource(DbData data) {
         return SOURCES.computeIfAbsent(
-                jdbcUrl,
+                data.getJdbcUrl(),
                 key -> {
                     PGSimpleDataSource ds = new PGSimpleDataSource();
-                    ds.setUser(CFG.dbLogin());
-                    ds.setPassword(CFG.dbPassword());
+                    ds.setUser(data.getLogin());
+                    ds.setPassword(data.getPassword());
                     ds.setUrl(key);
                     return new P6DataSource(ds);
                 }
         );
     }
 
-    private static Connection connection(String jdbcUrl) {
+    private static Connection connection(DbData data) {
         return THREAD_CONNECTIONS.computeIfAbsent(
                 Thread.currentThread().threadId(),
                 _ -> {
                     try {
                         return new HashMap<>(Map.of(
-                                jdbcUrl,
-                                dataSource(jdbcUrl).getConnection()
+                                data.getJdbcUrl(),
+                                dataSource(data).getConnection()
                         ));
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
                 }
         ).computeIfAbsent(
-                jdbcUrl,
+                data.getJdbcUrl(),
                 _ -> {
                     try {
-                        return dataSource(jdbcUrl).getConnection();
+                        return dataSource(data).getConnection();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }

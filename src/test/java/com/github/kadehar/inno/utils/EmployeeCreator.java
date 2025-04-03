@@ -9,13 +9,13 @@ public class EmployeeCreator {
     public static EmployeeJson newEmployee() {
         return new EmployeeJson(
                 null,
-                RandomDataUtils.randomFirstName(),
-                RandomDataUtils.randomLastName(),
-                RandomDataUtils.randomMiddleName(),
+                FakePerson.firstName(),
+                FakePerson.lastName(),
+                FakePerson.middleName(),
                 PreconditionsExtension.getCompanyId(),
-                RandomDataUtils.randomEmail(),
-                RandomDataUtils.randomUrl(),
-                RandomDataUtils.randomPhone(),
+                FakeData.email(),
+                FakeData.url(),
+                FakeData.phoneNumber(),
                 LocalDate.now().minusYears(30).toString(),
                 true
         );

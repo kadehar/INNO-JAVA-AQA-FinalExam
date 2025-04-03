@@ -2,8 +2,9 @@ package com.github.kadehar.inno.data.service;
 
 import com.github.kadehar.inno.config.Config;
 import com.github.kadehar.inno.data.dao.impl.EmployeeDaoJdbc;
+import com.github.kadehar.inno.db.DbData;
 
-import static com.github.kadehar.inno.data.Databases.transaction;
+import static com.github.kadehar.inno.db.Databases.transaction;
 
 public class EmployeeDbClient {
 
@@ -12,6 +13,6 @@ public class EmployeeDbClient {
     public void deleteEmployeeById(Long id) {
         transaction(connection -> {
             new EmployeeDaoJdbc(connection).deleteEmployeeById(id);
-        }, CFG.dbUrl());
+        }, new DbData(CFG.dbUrl(), CFG.dbLogin(), CFG.dbPassword()));
     }
 }

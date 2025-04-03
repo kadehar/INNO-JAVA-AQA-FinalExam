@@ -1,15 +1,7 @@
 plugins {
-    id 'java-library'
     alias(libs.plugins.allure.gradle)
     alias(libs.plugins.allure.adapter)
     alias(libs.plugins.lombok)
-}
-
-group 'github.com.kadehar'
-version '1.0'
-
-repositories {
-    mavenCentral()
 }
 
 allure {
@@ -20,14 +12,23 @@ allure {
     }
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+allprojects {
+    apply plugin: 'java-library'
+
+    group 'github.com.kadehar'
+    version '1.0'
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
 }
 
 dependencies {
     // Allure
-    testImplementation libs.allure.okhttp3
-    testImplementation libs.allure.attachments
     testImplementation(libs.allure.selenide) {
         exclude group: 'com.codeborne'
     }
@@ -37,22 +38,16 @@ dependencies {
     // CONFIG
     testImplementation libs.owner
     // DB
-    testImplementation libs.postgresql
-    testImplementation libs.p6spy
+    testImplementation project(":db")
     // REST
-    testImplementation libs.retrofit
-    testImplementation libs.retrofit.gson
-    testImplementation libs.okhttp
-    testImplementation libs.okhttp.logging
+    testImplementation project(":api")
     // WEB
     testImplementation libs.selenide
     // TEST
     testImplementation libs.junit.jupiter
+    testImplementation libs.assertJ
     // UTILS
-    testImplementation libs.javafaker
-    testImplementation libs.sql.formatter
-    testImplementation libs.commons.io
-
+    testImplementation project(":utils")
 }
 
 test {

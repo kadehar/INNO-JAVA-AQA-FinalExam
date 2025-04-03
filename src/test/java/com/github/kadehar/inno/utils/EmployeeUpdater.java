@@ -5,9 +5,9 @@ import com.github.kadehar.inno.model.rest.EmployeeJson;
 public class EmployeeUpdater {
     public static EmployeeJson update(EmployeeJson employeeJson, Field field) {
         switch (field) {
-            case URL -> employeeJson.setUrl(RandomDataUtils.randomUrl());
-            case EMAIL -> employeeJson.setEmail(RandomDataUtils.randomEmail());
-            case PHONE -> employeeJson.setPhone(RandomDataUtils.randomPhone());
+            case URL -> employeeJson.setUrl(FakeData.url());
+            case EMAIL -> employeeJson.setEmail(FakeData.email());
+            case PHONE -> employeeJson.setPhone(FakeData.phoneNumber());
         }
         return employeeJson;
     }
