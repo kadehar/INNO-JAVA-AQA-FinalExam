@@ -1,0 +1,65 @@
+plugins {
+    id 'java-library'
+    alias(libs.plugins.allure.gradle)
+    alias(libs.plugins.allure.adapter)
+    alias(libs.plugins.lombok)
+}
+
+group 'github.com.kadehar'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+allure {
+    version.set("2.29.0")
+    adapter {
+        aspectjWeaver.set(true)
+        aspectjVersion.set("1.9.23")
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    // Allure
+    testImplementation libs.allure.okhttp3
+    testImplementation libs.allure.attachments
+    testImplementation(libs.allure.selenide) {
+        exclude group: 'com.codeborne'
+    }
+    testImplementation(libs.allure.junit5) {
+        exclude group: "org.junit.jupiter"
+    }
+    // CONFIG
+    testImplementation libs.owner
+    // DB
+    testImplementation libs.postgresql
+    testImplementation libs.p6spy
+    // REST
+    testImplementation libs.retrofit
+    testImplementation libs.retrofit.gson
+    testImplementation libs.okhttp
+    testImplementation libs.okhttp.logging
+    // WEB
+    testImplementation libs.selenide
+    // TEST
+    testImplementation libs.junit.jupiter
+    // UTILS
+    testImplementation libs.javafaker
+    testImplementation libs.sql.formatter
+    testImplementation libs.commons.io
+
+}
+
+test {
+    options {
+        systemProperties(System.getProperties())
+    }
+    testLogging.showStandardStreams = true
+    testLogging.exceptionFormat = 'full'
+    useJUnitPlatform()
+}

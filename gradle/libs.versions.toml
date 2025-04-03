@@ -1,0 +1,49 @@
+[versions]
+junit = "5.11.4"
+faker = "1.0.2"
+owner = "1.0.12"
+selenide = "7.7.3"
+allure = "2.29.0"
+postgresql = "42.7.5"
+p6spy = "3.9.1"
+retrofit = "2.11.0"
+okhttp3 = "4.11.0"
+allurePlugin = "2.12.0"
+lombokPlugin = "8.13.1"
+sqlFormatter = "2.0.5"
+commonsIo = "2.16.1"
+aspectj = "1.9.23"
+
+[libraries]
+# Test frameworks
+junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit" }
+
+# Utilities
+javafaker = { group = "com.github.javafaker", name = "javafaker", version.ref = "faker" }
+owner = { group = "org.aeonbits.owner", name = "owner", version.ref = "owner" }
+selenide = { group = "com.codeborne", name = "selenide", version.ref = "selenide" }
+
+# Database
+postgresql = { group = "org.postgresql", name = "postgresql", version.ref = "postgresql" }
+p6spy = { group = "p6spy", name = "p6spy", version.ref = "p6spy" }
+
+# HTTP Clients
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp3" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp3" }
+
+# Allure
+allure-okhttp3 = { group = "io.qameta.allure", name = "allure-okhttp3", version.ref = "allure" }
+allure-attachments = { group = "io.qameta.allure", name = "allure-attachments", version.ref = "allure" }
+allure-selenide = { group = "io.qameta.allure", name = "allure-selenide", version.ref = "allure" }
+allure-junit5 = { group = "io.qameta.allure", name = "allure-junit5", version.ref = "allure" }
+
+# Other
+sql-formatter = { group = "com.github.vertical-blank", name = "sql-formatter", version.ref = "sqlFormatter" }
+commons-io = { group = "commons-io", name = "commons-io", version.ref = "commonsIo" }
+
+[plugins]
+allure-gradle = { id = "io.qameta.allure", version.ref = "allurePlugin" }
+allure-adapter = { id = "io.qameta.allure-adapter", version.ref = "allurePlugin" }
+lombok = { id = "io.freefair.lombok", version.ref = "lombokPlugin" }
