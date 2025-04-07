@@ -60,9 +60,9 @@ jobs:
       - name: Run tests
         run: |
           if [ "$TEST_SCOPE" = "all" ]; then
-            ./gradle test
+            gradle test
           else
-            ./gradle test -Djunit.jupiter.tags="$TEST_SCOPE"
+            gradle test -Djunit.jupiter.tags="$TEST_SCOPE"
           fi
 
       - name: Load test report history
