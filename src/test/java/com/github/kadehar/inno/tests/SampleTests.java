@@ -15,6 +15,7 @@ import com.github.kadehar.inno.utils.FakePerson;
 import com.github.kadehar.inno.utils.RandomNumbers;
 import io.qameta.allure.Param;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -30,6 +31,7 @@ public class SampleTests {
     @ArgumentsSource(UsersArgumentsProvider.class)
     @DisplayName("Verify that checkout sum is valid")
     @WebTest
+    @Tag("web")
     void verifyCheckoutSumIsValid(@Param(value = "user", mode = HIDDEN) User user) {
         LoginPage.goTo()
                 .login(user)
@@ -52,6 +54,7 @@ public class SampleTests {
     @ApiLogin
     @WithEmployee
     @DisplayName("Can get employees by their company id")
+    @Tag("api")
     void canGetEmployeesByCompanyId(EmployeeJson employee) {
         List<EmployeeJson> employees = employeeClient.findAll(PreconditionsExtension.getCompanyId());
         assertThat(employees).contains(employee);
