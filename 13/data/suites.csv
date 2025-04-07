@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Mon Apr 07 17:18:36 GMT 2025","Mon Apr 07 17:18:42 GMT 2025","5248","","com.github.kadehar.inno.tests.SampleTests","","com.github.kadehar.inno.tests.SampleTests","canGetEmployeesByCompanyId","Can get employees by their company id",""
