@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Apr 07 16:39:21 GMT 2025","Mon Apr 07 16:39:28 GMT 2025","7089","","com.github.kadehar.inno.tests.SampleTests","","com.github.kadehar.inno.tests.SampleTests","verifyCheckoutSumIsValid","Verify that checkout sum is valid [2] Login as performance_glitch_user",""
+"passed","Mon Apr 07 16:39:17 GMT 2025","Mon Apr 07 16:39:21 GMT 2025","4008","","com.github.kadehar.inno.tests.SampleTests","","com.github.kadehar.inno.tests.SampleTests","verifyCheckoutSumIsValid","Verify that checkout sum is valid [1] Login as standard_user",""
+"failed","Mon Apr 07 16:39:17 GMT 2025","Mon Apr 07 16:39:23 GMT 2025","6251","","com.github.kadehar.inno.tests.SampleTests","","com.github.kadehar.inno.tests.SampleTests","canGetEmployeesByCompanyId","Can get employees by their company id",""
