@@ -56,5 +56,9 @@ test {
     }
     testLogging.showStandardStreams = true
     testLogging.exceptionFormat = 'full'
-    useJUnitPlatform()
+    useJUnitPlatform {
+        if (System.getProperty("junit.jupiter.tags")) {
+            includeTags System.getProperty("junit.jupiter.tags")
+        }
+    }
 }
