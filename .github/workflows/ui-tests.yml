@@ -1,5 +1,6 @@
 name: UI-tests
 run-name: UI-tests
+on: [push]
 
 jobs:
   build_and_test:
