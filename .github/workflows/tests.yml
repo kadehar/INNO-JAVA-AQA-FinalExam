@@ -61,7 +61,7 @@ jobs:
             gradle test
           else
             echo "Running tests with tag: ${{ inputs.test_scope }}"
-            gradle test -Djunit.jupiter.tags="${{ inputs.test_scope }}"
+            gradle --tests * --include-tags=${{ inputs.test_scope }}
           fi
 
       - name: Load test report history
