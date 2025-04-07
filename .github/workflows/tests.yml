@@ -7,8 +7,8 @@ on:
     branches: [ main ]
   workflow_dispatch:
     inputs:
-      testTag:
-        description: 'Test tag (use "all" to run all tests)'
+      test_scope:
+        description: 'Test Scope (use "all" to run all tests)'
         required: true
         default: 'all'
         type: choice
@@ -16,9 +16,6 @@ on:
           - all
           - web
           - api
-
-env:
-  TEST_SCOPE: ${{github.event.inputs.test_scope || 'all'}}
 
 jobs:
   test:
@@ -59,10 +56,12 @@ jobs:
 
       - name: Run tests
         run: |
-          if [ "$TEST_SCOPE" = "all" ]; then
+          if [ "${{ inputs.test_scope }}" = "all" ]; then
+            echo "Running all tests"
             gradle test
           else
-            gradle test -Djunit.jupiter.tags="$TEST_SCOPE"
+            echo "Running tests with tag: ${{ inputs.test_scope }}"
+            gradle test -Djunit.jupiter.tags="${{ inputs.test_scope }}"
           fi
 
       - name: Load test report history

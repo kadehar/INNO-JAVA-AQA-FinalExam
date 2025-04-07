@@ -80,10 +80,10 @@ gradle test
 
 ###### Запуск api тестов
 ```shell
-gradle apiTest
+gradle test -Djunit.jupiter.tags="api"
 ```
 
 ###### Запуск web тестов
 ```shell
-gradle webTest
+gradle test -Djunit.jupiter.tags="web"
 ```

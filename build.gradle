@@ -58,25 +58,3 @@ test {
     testLogging.exceptionFormat = 'full'
     useJUnitPlatform()
 }
-
-tasks.register("apiTest", Test) {
-    options {
-        systemProperties(System.getProperties())
-    }
-    testLogging.showStandardStreams = true
-    testLogging.exceptionFormat = 'full'
-    useJUnitPlatform {
-        includeTags "api"
-    }
-}
-
-tasks.register("webTest", Test) {
-    options {
-        systemProperties(System.getProperties())
-    }
-    testLogging.showStandardStreams = true
-    testLogging.exceptionFormat = 'full'
-    useJUnitPlatform {
-        includeTags "web"
-    }
-}
