@@ -42,9 +42,6 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x gradle
 
-      - name: Build project
-        run: gradle build
-
       - name: Cache Gradle dependencies
         uses: actions/cache@v4
         with:
